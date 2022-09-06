@@ -5,7 +5,9 @@ pipeline{
             steps{
                 input("Approve or Reject the build")
                 script{
-                    sh "This script is approved!"
+                    sh """
+                      echo "This script is approved!"
+                    """
                 }
             }
         }
