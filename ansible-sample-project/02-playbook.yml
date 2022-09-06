@@ -1,9 +1,0 @@
----
-- hosts: all
-  vars:
-    - username: osboxes
-    - home: /home/osboxes   
-  tasks:
-    - name: print variables
-      debug:
-        msg: "Username: {{ username }}, Home dir: {{ home }}"
