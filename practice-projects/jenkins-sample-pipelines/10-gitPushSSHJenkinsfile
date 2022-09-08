@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+    stages {
+        stage('Git Push') {
+            steps {
+                git credentialsId: 'github-ssh-key', url: "git@github.com:VishnuvardhanKrishnan/devops-aug-sep-batch.git", branch: 'main'
+                sshagent(credentials: ['github-ssh-key']) {
+                    sh """
+                        echo "Workspace is $WORKSPACE"
+                        git clone git@github.com:VishnuvardhanKrishnan/devops-aug-sep-batch.git
+                        git tag -a some_tag -m 'Jenkins'
+                        git push --tags
+                    """
+                }
+            }
+        }
+    }
+}
+
+
+/*
+
+pipeline {
+    agent any
+    stages {
+        stage('Git Push') {
+            steps {
+                cleanWs()
+                withCredentials([gitUsernamePassword(credentialsId: 'github-http-auth', gitToolName: 'Default')]) {
+                    script {
+                        sh """
+                            git clone https://github.com/VishnuvardhanKrishnan/devops-aug-sep-batch.git devops-aug-sep-batch -b main
+                            cd devops-aug-sep-batch
+                            git tag -a some_tag1 -m 'Jenkins'
+                            git push --tags
+                        """
+                    }
+                }
+            }
+        }
+    }
+}
+
+*/

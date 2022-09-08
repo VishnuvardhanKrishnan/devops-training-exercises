@@ -4,10 +4,8 @@ pipeline{
         stage('User Input'){
             steps{
                 input("Approve or Reject the build")
-                script{
-                    sh """
+                script {
                       echo "This script is approved!"
-                    """
                 }
             }
         }
