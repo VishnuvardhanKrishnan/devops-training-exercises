@@ -17,28 +17,3 @@ pipeline {
     }
 }
 
-
-/*
-
-pipeline {
-    agent any
-    stages {
-        stage('Git Push') {
-            steps {
-                cleanWs()
-                withCredentials([gitUsernamePassword(credentialsId: 'github-http-auth', gitToolName: 'Default')]) {
-                    script {
-                        sh """
-                            git clone https://github.com/VishnuvardhanKrishnan/devops-aug-sep-batch.git devops-aug-sep-batch -b main
-                            cd devops-aug-sep-batch
-                            git tag -a some_tag1 -m 'Jenkins'
-                            git push --tags
-                        """
-                    }
-                }
-            }
-        }
-    }
-}
-
-*/
