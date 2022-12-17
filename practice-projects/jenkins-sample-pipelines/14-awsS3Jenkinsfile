@@ -4,11 +4,11 @@ pipeline {
         stage('Git Clone') {
             steps {
                 cleanWs()
-                git credentialsId: 'github-ssh-key', url: "git@github.com:VishnuvardhanKrishnan/devops-aug-sep-batch.git", branch: 'maven'
-                sshagent(credentials: ['github-ssh-key']) {
+                git credentialsId: 'github-creds', url: "git@github.com:VishnuvardhanKrishnan/devops-aug-sep-batch.git", branch: 'jenkins'
+                sshagent(credentials: ['github-creds']) {
                     sh """
                         echo "Workspace is $WORKSPACE"
-                        git clone git@github.com:VishnuvardhanKrishnan/devops-aug-sep-batch.git
+                        git clone git@github.com:VishnuvardhanKrishnan/devops-dec-batch.git
                     """
                 }
             }

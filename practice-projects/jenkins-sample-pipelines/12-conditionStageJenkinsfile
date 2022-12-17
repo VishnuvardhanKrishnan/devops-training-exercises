@@ -17,7 +17,11 @@ pipeline {
             }
         }
         stage('Git Push') {
-            when { expression { return git_push } }
+            when { 
+              expression { 
+                return git_push 
+              } 
+            }
             steps {
                 sshagent(credentials: ['github-ssh-key']) {
                     sh """
