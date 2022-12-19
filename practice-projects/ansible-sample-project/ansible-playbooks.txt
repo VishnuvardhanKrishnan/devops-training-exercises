@@ -1,15 +1,46 @@
-Install Ansible on Amazon Linux / CentOS
-===========================================
-# sudo yum install epel-release
-# sudo yum install ansible
+Documentation:
+==============
+https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+https://docs.ansible.com/ansible/2.5/user_guide/intro_adhoc.html
+https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html
+https://docs.ansible.com/ansible/latest/reference_appendices/playbooks_keywords.html
+https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
 
-## Edit the file /etc/ansible/ansible.cfg and the below entry:
-host_key_checking = False
+Install Ansible on Amazon Linux / CentOS:
+=========================================
+$ sudo yum install epel-release
+$ sudo yum install ansible
+(or)
+$ sudo amazon-linux-extras install ansible2
+
+Ansible Configuration:
+======================
+(1) Copy the key-pair pem file to the home path - /root/.ssh (or) /home/ec2-user/.ssh
+(2) ssh-agent bash
+(3) ssh-add ~/.ssh/keypair.pem
+(4) Verification command:
+    ansible localhost -m ping -e 'ansible_python_interpreter="/usr/bin/env python"'
+(5) Disable host key verification
+(6) Edit /etc/ansible/ansible.cfg
+    [defaults]
+    host_key_checking = False
 
 Adhoc command:
-===============
+==============
 Access System Information (Facts) in Ansible Playbooks:
-  ansible all -m setup -u osboxes
+  ansible all -m setup -u ec2-user
+
+To ensure a package is installed without updating it:
+  ansible all -m ansible.builtin.yum -a "name=python state=present"
+
+Manage users
+  ansible all -m ansible.builtin.user -a "name=foo state=absent"
+
+To transfer a file directly to many servers:
+  ansible all -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+
+The file module allows changing ownership and permissions on files.
+  ansible web -m file -a "dest=/srv/foo/a.txt mode=600"
 
 Playbook details and execution:
 ===============================
@@ -32,10 +63,11 @@ Playbook details and execution:
   ansible-playbook 06-playbook.yml 
 
 07 - Privilege Escalation in Ansible Playbooks
-  ansible-playbook 07-playbook.yml -u osboxes -K
+  ansible-playbook 07-playbook.yml -u ec2-user -K
 
 08 - Update Linux packages
   ansible-playbook 08-playbook.yml -u root -K
   
 09 - Install Apache & Using Handlers
   ansible-playbook 09-playbook.yml
+
