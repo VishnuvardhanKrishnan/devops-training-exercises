@@ -72,3 +72,8 @@ Playbook details and execution:
 09 - Install Apache & Using Handlers
   ansible-playbook 09-playbook.yml
 
+10 - Single shell commands
+  ansible-playbook 09-playbook.yml
+
+11 - Execute shell script
+  ansible-playbook 09-playbook.yml
