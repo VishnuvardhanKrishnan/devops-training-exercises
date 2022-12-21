@@ -1,3 +1,4 @@
 # to be placed in /etc/ansible/hosts
-target1 ansible_host=192.168.1.13 ansible_ssh_pass=osboxes.org
-taregt2 ansible_host=192.168.1.14 ansible_ssh_pass=osboxes.org
+[web]
+172.31.44.191   ansible_ssh_private_key_file=~/.ssh/devops-training.pem    ansible_user=ec2-user
+172.31.32.20    ansible_ssh_private_key_file=~/.ssh/devops-training.pem    ansible_user=ec2-user

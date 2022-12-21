@@ -8,20 +8,21 @@ https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
 
 Install Ansible on Amazon Linux / CentOS:
 =========================================
-$ sudo yum install epel-release
-$ sudo yum install ansible
+$ sudo yum install epel-release -y
+$ sudo yum install ansible -y
 (or)
-$ sudo amazon-linux-extras install ansible2
+$ sudo amazon-linux-extras install ansible2 -y
 
 Ansible Configuration:
 ======================
 (1) Copy the key-pair pem file to the home path - /root/.ssh (or) /home/ec2-user/.ssh
-(2) ssh-agent bash
-(3) ssh-add ~/.ssh/keypair.pem
-(4) Verification command:
+(2) chmod 400 /root/.ssh/keypair.pem
+(3) ssh-agent bash
+(4) ssh-add ~/.ssh/keypair.pem
+(5) Verification command:
     ansible localhost -m ping -e 'ansible_python_interpreter="/usr/bin/env python"'
-(5) Disable host key verification
-(6) Edit /etc/ansible/ansible.cfg
+(6) Disable host key verification
+(7) Edit /etc/ansible/ansible.cfg
     [defaults]
     host_key_checking = False
 
