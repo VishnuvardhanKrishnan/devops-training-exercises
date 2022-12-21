@@ -2,9 +2,9 @@
 - hosts: all
   vars:
     - create_user_file: yes
-    - user: osboxes
+    - user: ec2-user
   tasks:
-    - name: create file for user osboxes
+    - name: create file for user ec2-user
       file:
         path: /home/{{ user }}/myfile
         state: touch
