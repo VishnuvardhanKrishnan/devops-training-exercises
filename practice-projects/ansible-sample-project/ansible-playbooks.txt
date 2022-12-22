@@ -5,6 +5,7 @@ https://docs.ansible.com/ansible/2.5/user_guide/intro_adhoc.html
 https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html
 https://docs.ansible.com/ansible/latest/reference_appendices/playbooks_keywords.html
 https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html
 
 Install Ansible on Amazon Linux / CentOS:
 =========================================
