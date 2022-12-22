@@ -1,19 +1,16 @@
 ---
   - hosts: all
+    become: yes
     tasks:
-    - name: Copy & Create File.
-      copy:
-       dest: /root/script.sh
-       content: |
-       # A simple variable example
-       greeting=Hello
-       name=Team
-       echo $greeting $name
+    - name: Copy the script
+      ansible.builtin.template:
+        src: first_script.sh
+        dest: /tmp
 
     - name: Run Shell Script.
-      shell: sh /root/script.sh
+      shell: sh /tmp/first_script.sh
 
     - name: Remove Shell Script
       file:
-       path: /root/script.sh
-       state: absent
+        path: /tmp/first_script.sh
+        state: absent

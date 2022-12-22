@@ -74,7 +74,7 @@ Playbook details and execution:
   ansible-playbook 09-playbook.yml
 
 10 - Single shell commands
-  ansible-playbook 09-playbook.yml
+  ansible-playbook 10-playbook.yml
 
 11 - Execute shell script
-  ansible-playbook 09-playbook.yml
+  ansible-playbook 11-playbook.yml
